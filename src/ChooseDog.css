@@ -1,0 +1,13 @@
+.chooseable-dogs {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.choosable {
+    width: 100px;
+    height: 200px;
+    flex: 1 0 20%;
+    background-size: cover;
+    cursor: pointer;
+}
+
