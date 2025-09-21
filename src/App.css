@@ -37,3 +37,18 @@
 #race-track .dog.fav {
     border: 5px solid gold
 }
+
+/*
+.race-paused {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+}
+
+.race-started {
+    opacity: 1;
+    display: block;
+    pointer-events: initial;
+}
+
+*/

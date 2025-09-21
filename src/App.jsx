@@ -5,20 +5,29 @@ export default function App() {
 
     const [chosenDogs, setChosenDogs] = useState([]);
     const [favDog, setFavDog] = useState(0);
+    const [favDogChosen, setFavDogChosen] = useState(false);
 
     useEffect( () => {
         fetch("https://dog.ceo/api/breeds/image/random/10")
         .then( res => res.json() )
         .then( data => {
-            setChosenDogs(data.message)
-        })
+            let temp = [];
+            data.message.map( el => {
+                 temp.push({name: el, progress: 0})
+            })
+            setChosenDogs(temp)
+        });
     }, [])
+
 
     function favChosen(fav) {
         setFavDog(fav)
         setFavDogChosen(true)
-        console.log(favDog)
     }
+
+    setInterval(() => {
+        
+    }, 100);
 
 
     return (
@@ -27,9 +36,9 @@ export default function App() {
             <section id="selection-area">
                 <h2>Who will win the race</h2>
                 <p>pick your favorite and the race may begin</p>
-                <div id="selection">
+                <div id="selection" className={favDogChosen ? "race-paused" : "race-started"}>
                     {chosenDogs.map( (el) => {
-                        return <div className="dog" style={{backgroundImage: "url(" + el + ")"}} onClick={() => favChosen(el)}></div>
+                        return <div className="dog" style={{backgroundImage: "url(" + el.name + ")"}} onClick={() => favChosen(el)}></div>
                     })}
                 </div>
             </section>
@@ -37,11 +46,11 @@ export default function App() {
             <section id="track">
                 <h2>Race Track</h2>
 
-                <div id="race-track">
+                <div id="race-track" className={favDogChosen ? "race-started" : "race-paused"}>
                     {chosenDogs.map( el => {
                         return (
                             <div className="track-bar">
-                                <div className={ el === favDog ? "dog fav" : "dog"} style={{backgroundImage: "url(" + el + ")"}}></div>
+                                <div className={ el === favDog ? "dog fav" : "dog"} style={{backgroundImage: "url(" + el.name + ")"}}></div>
                             </div>
                         )
                     })}
