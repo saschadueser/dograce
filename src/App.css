@@ -1,0 +1,39 @@
+#selection {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#race-track {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+#selection .dog {
+    width: 150px;
+    height: 150px;
+
+    background-size: cover;
+    cursor: pointer;
+}
+
+#race-track .dog {
+    border-radius: 100px;
+}
+
+.track-bar {
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+    border-radius: 100px;
+    display: flex;
+    flex-flow: column;
+}
+
+#race-track .dog {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}
+
+#race-track .dog.fav {
+    border: 5px solid gold
+}
